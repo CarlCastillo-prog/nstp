@@ -35,4 +35,3 @@ window.addEventListener('popstate', e => {
     loadContent(e.state.url, document.title);
   }
 });
- 
