@@ -61,39 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ===== AUTOPLAY =====
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-  const container = document.querySelector('.carousel-container');
-  if (container) {
-    container.addEventListener('mouseenter', stopAutoPlay);
-    container.addEventListener('mouseleave', startAutoPlay);
-  }
-
-  // ===== TOUCH SWIPE =====
-  if (container) {
-    container.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      stopAutoPlay();
-    });
-
-    container.addEventListener('touchend', (e) => {
-      const endX = e.changedTouches[0].clientX;
-      const diff = startX - endX;
-
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) nextSlide();
-        else prevSlide();
-      }
-      startAutoPlay();
-    });
-  }
 
   // ===== KEYBOARD CONTROL =====
   document.addEventListener('keydown', (e) => {
