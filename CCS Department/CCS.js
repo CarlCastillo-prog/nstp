@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextBtn = document.querySelector('.crsl-btn2');
   const indicators = document.querySelectorAll('.indicator');
 
-  const slideWidth = 205;
+  
   const totalSlides = slides.length;
 
   let currentIndex = 0;
@@ -17,18 +17,26 @@ document.addEventListener('DOMContentLoaded', function() {
   let startX = 0;
 
   // ===== UPDATE CAROUSEL =====
-  function updateCarousel() {
-    const translateX = -currentIndex * slideWidth;
-    track.style.transform = 'translateX(' + translateX + 'px)';
+ function updateCarousel() {
+  const container = document.querySelector('.carousel-container');
+  const containerWidth = container.offsetWidth;
 
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === currentIndex);
-    });
+  const currentSlide = slides[currentIndex];
 
-    indicators.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
-  }
+  const offset =
+    currentSlide.offsetLeft -
+    (containerWidth / 2 - currentSlide.offsetWidth / 2);
+
+  track.style.transform = `translateX(${-offset}px)`;
+
+  slides.forEach((slide, index) => {
+    slide.classList.toggle('active', index === currentIndex);
+  });
+
+  indicators.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentIndex);
+  });
+}
 
   // ===== NEXT / PREV =====
   function nextSlide() {
