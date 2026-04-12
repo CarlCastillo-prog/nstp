@@ -693,7 +693,7 @@ body {
 }
 
 .item-number {
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   font-weight: 900;
   color: white;
   text-shadow: 0 4px 12px rgba(0,0,0,0.6);
@@ -922,7 +922,7 @@ body {
   }
 
   .item-number {
-    font-size: 2em;
+    font-size: 1.0em;
   }
 
   .modal-content {
