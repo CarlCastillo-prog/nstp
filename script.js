@@ -30,3 +30,19 @@ menu.addEventListener('click', (e) => {
 });
 
 // Popstate for browser back/forward
+
+//modal
+function openUCModal(imgSrc, title) {
+  document.getElementById('uc-modal-img').src = imgSrc;
+  document.getElementById('uc-modal-title').textContent = title;
+  document.getElementById('uc-modal').classList.add('show');
+}
+
+function closeUCModal() {
+  document.getElementById('uc-modal').classList.remove('show');
+}
+
+// Close with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeUCModal();
+});

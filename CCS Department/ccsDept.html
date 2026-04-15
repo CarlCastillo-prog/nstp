@@ -56,17 +56,17 @@
     <button class="crsl-btn"><i class="fas fa-chevron-left"></i></button>
 
     <div class="carousel-track">
-      <div class="carousel-slide">
+      <div class="carousel-slide" onclick="openUCModal('../CCS MV/ccsMission.png', 'CCS Mission')">
         <div class="slide-avatar" style="background-image: url('../CCS MV/ccsMission.png');"></div>
         <div class="slide-name">CCS Mission</div>
       </div>
 
-      <div class="carousel-slide">
+      <div class="carousel-slide" onclick="openUCModal('../CCS MV/ccsVision.png', 'CCS Vision')">
         <div class="slide-avatar" style="background-image: url('../CCS MV/ccsVision.png');"></div>
         <div class="slide-name">CCS Vision</div>
       </div>
 
-      <div class="carousel-slide">
+      <div class="carousel-slide" onclick="openUCModal('../CCS MV/ccsGoals.png', 'CCS Goals')">
         <div class="slide-avatar" style="background-image: url('../CCS MV/ccsGoals.png');"></div>
         <div class="slide-name">CCS Goals</div>
       </div>
@@ -81,12 +81,25 @@
     </div>
 
   </div>
-
+    <!-- UC Modal -->
+    <div id="uc-modal" class="uc-modal">
+      <div class="uc-modal-overlay" onclick="closeUCModal()"></div>
+      <div class="uc-modal-content">
+        <button class="uc-modal-close" onclick="closeUCModal()">
+          <i class="fas fa-times"></i>
+        </button>
+        <img id="uc-modal-img" src="" alt="">
+        <h3 id="uc-modal-title"></h3>
+      </div>
+    </div>
 </div>
 
   <!-- JS -->
 <script src="../Home/searchIndex.js"></script>
 <script src="../Home/globalSearch.js"></script>
+<script src="../Search/searchIndex.js"></script>
+<script src="../Home Page/globalSearch.js"></script>
+<script src="../Home Page/globalSearch.css" rel="stylesheet"></script>
 <script src="../Home/script.js"></script>
 <script src="CCS.js"></script>
 

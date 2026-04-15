@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
           itemType: status,
           date: date,
           category: category,
-          image: imageData, // 🔥 image saved here
+          image: imageData, 
           status: "pending",
           createdAt: new Date(),
         });

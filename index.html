@@ -62,25 +62,28 @@
       
 
       <div class="carousel-track">
-        <div class="carousel-slide">
-          <div class="slide-avatar" style="background-image: url('../UC MVH/ucMission.png');"></div>
-          <div class="slide-name">UC Mission</div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-avatar" style="background-image: url('../UC MVH/ucVision.png');"></div>
-          <div class="slide-name">UC Vision</div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slide-avatar" style="background-image: url('../UC MVH/ucGoals.png');"></div>
-          <div class="slide-name">UC Goals</div>
-        </div>
-        
-        
-        <div class="carousel-slide">
-          <div class="slide-avatar" style="background-image: url('../UC MVH/ucHymn.png');"></div>
-          <div class="slide-name">UC Hymn</div>
-        </div>
+        <div class="carousel-slide" onclick="openUCModal('../UC MVH/ucMission.png', 'UC Mission')">
+        <div class="slide-avatar" style="background-image: url('../UC MVH/ucMission.png');"></div>
+        <div class="slide-name">UC Mission</div>
       </div>
+
+      <div class="carousel-slide" onclick="openUCModal('../UC MVH/ucVision.png', 'UC Vision')">
+        <div class="slide-avatar" style="background-image: url('../UC MVH/ucVision.png');"></div>
+        <div class="slide-name">UC Vision</div>
+      </div>
+
+      <div class="carousel-slide" onclick="openUCModal('../UC MVH/ucGoals.png', 'UC Goals')">
+        <div class="slide-avatar" style="background-image: url('../UC MVH/ucGoals.png');"></div>
+        <div class="slide-name">UC Goals</div>
+      </div>
+
+      <div class="carousel-slide" onclick="openUCModal('../UC MVH/ucHymn.png', 'UC Hymn')">
+        <div class="slide-avatar" style="background-image: url('../UC MVH/ucHymn.png');"></div>
+        <div class="slide-name">UC Hymn</div>
+      </div>
+      </div>
+
+      <!-- Modal -->
       
 <!-- CRSL BUTTON RIGHT -->
       <button class="crsl-btn2" id = "crsl"><i class="fas fa-chevron-right"></i></button>
@@ -92,6 +95,19 @@
         <button class="indicator"></button>
       </div>
     </div>
+
+      <!-- Modal -->
+    <div id="uc-modal" class="uc-modal">
+        <div class="uc-modal-overlay" onclick="closeUCModal()"></div>
+        <div class="uc-modal-content">
+          <button class="uc-modal-close" onclick="closeUCModal()">
+            <i class="fas fa-times"></i>
+          </button>
+          <img id="uc-modal-img" src="" alt="">
+          <h3 id="uc-modal-title"></h3>
+        </div>
+      </div>
+
 
 </div>
 
@@ -108,7 +124,12 @@
 
   <!-- JS -->
 <script src="script.js"></script>
+
+<script src="Search/searchIndex.js"></script>
+<script src="Home Page/globalSearch.js"></script>
+
 <script src="../Search/carousel.js"></script>
+
 
 
 </body>
