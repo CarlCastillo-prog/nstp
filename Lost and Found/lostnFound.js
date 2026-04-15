@@ -94,8 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.addEventListener("change", function () {
       const wrapper = this.closest(".date-wrapper");
       const placeholder = wrapper.querySelector(".date-placeholder");
-
-      
     });
   }
 
