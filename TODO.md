@@ -1,12 +1,10 @@
-# Global Search Implementation TODO
+# Task: Make Guide GO list in searchbar clickable and redirect to Guide GO page
 
-## Plan Summary
-Integrate Home Page/perfect-global-search.js dropdown search (user preferred):
-1. ✅ Understand files & create plan
-2. ✅ Switched to perfect-global-search.js in index.html
-3. Test functionality
-4. Extend to other pages
-5. Cleanup duplicates
-
-**Status: Ready to test - global dropdown search active**
+## Steps:
+- [x] Create TODO.md with plan steps
+- [x] Add "Guide GO" category item to Search/searchIndex.js
+- [x] Verify no syntax errors introduced
+- [x] Fix path issues in searchIndex.js (added ../ prefixes matching sidebar links)
+- [x] Test search functionality and redirect
+- [x] Mark complete
 
