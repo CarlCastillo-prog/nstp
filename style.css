@@ -16,7 +16,7 @@ body {
   radial-gradient(circle at 50% 50%, #430a6fa0, transparent 60%),
 
   linear-gradient( rgba(255, 255, 255, 0.153) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255, 255, 255, 0.151) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
 
   #0c0516;
 
@@ -29,6 +29,7 @@ body {
     auto;
  
     min-height: 100vh;
+    background-attachment: fixed;
 }
 
 /* SIDEBAR */
@@ -120,7 +121,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background: rgba(255,255,255,0.1);
-  padding: 15px 50px;
+  padding: 17.5px 50px;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -129,7 +130,7 @@ body {
   background: rgba(241, 240, 240, 0.08);
   backdrop-filter: blur(15px);
   color: #ffffff;
-  padding: 15px 25px;
+  padding: 14px 25px;
   border-radius: 30px;
   font-size: 16px;
   min-width: 350px;
@@ -657,8 +658,8 @@ body {
 
 .uc-modal-close {
   position: absolute;
-  top: 12px;
-  right: 15px;
+  bottom: 25px;
+  right: 30px;
   background: rgba(255,255,255,0.15);
   border: none;
   color: white;
@@ -668,10 +669,14 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.uc-modal-close:hover {
-  background: rgba(255,255,255,0.3);
+.uc-modal-close:hover { 
+  background: rgba(255, 50, 50, 0.9);
+  border-color: rgba(255, 80, 80, 0.8);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 12px 35px rgba(255, 50, 50, 0.4);
 }
 
 /* Global Search Modal Styles */

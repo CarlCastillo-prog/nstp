@@ -35,12 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateModal() {
-    const item = gridData[currentIndex];
+  const item = gridData[currentIndex];
+  modalImage.style.opacity = 0;
+
+  const img = new Image();
+  img.src = item.image;
+
+  img.onload = () => {
     modalImage.src = item.image;
-    modalImage.alt = item.title;
-    modalTitle.textContent = item.title;
-    modalDetails.textContent = item.details;
-  }
+    modalImage.style.opacity = 1;
+  };
+
+  modalImage.alt = item.title;
+  modalTitle.textContent = item.title;
+  modalDetails.textContent = item.details;
+}
 
   function nextImage() {
     currentIndex = (currentIndex + 1) % gridData.length;
@@ -82,7 +91,13 @@ document.addEventListener('DOMContentLoaded', function() {
       else prevImage();
     }
   });
-
+  function preloadImages(data) {
+  data.forEach(item => {
+    const img = new Image();
+    img.src = item.image;
+  });
+}
   // Initialize
   createGrid();
+  preloadImages(gridData);
 });

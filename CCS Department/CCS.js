@@ -85,7 +85,10 @@ function closeUCModal() {
   document.getElementById('uc-modal').classList.remove('show');
 }
 
-// Close with Escape key
+// Block Escape key from closing the modal
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeUCModal();
+  if (e.key === 'Escape') {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+  }
 });

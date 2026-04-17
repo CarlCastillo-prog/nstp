@@ -10,7 +10,7 @@
 }
 
 body {
-   min-height: 100vh;
+  min-height: 100vh;
   display: flex; 
   background: 
   radial-gradient(circle at 20% 20%, #7f3aa1, transparent 40%),
@@ -31,6 +31,7 @@ body {
     auto;
  
     min-height: 100vh;
+    background-attachment: fixed;
 }
 
 .sidebar {
@@ -121,7 +122,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background: rgba(255,255,255,0.1);
-  padding: 15px 50px;
+  padding: 16.5px 50px;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -258,7 +259,7 @@ body {
 
 .grid-item {
   aspect-ratio: 1;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+  background: linear-gradient(135deg, rgb(255, 255, 255), rgb(219, 68, 68));
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -352,6 +353,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
 .modal-right {
