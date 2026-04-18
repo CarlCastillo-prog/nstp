@@ -1,6 +1,6 @@
 const gridData = [
   {
-    id: 2,
+    id: 1,
     image: '../Guide GO Pictures/studAccDiv.jpg',
     title: 'ACCOUNTING',
     details:
@@ -8,7 +8,7 @@ const gridData = [
   },
 
   {
-    id: 1,
+    id: 2,
     image: '../Guide GO Pictures/cashierOffice.jpg',
     title: 'CASHIER OFFICE',
     details:
