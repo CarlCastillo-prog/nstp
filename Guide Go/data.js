@@ -4,15 +4,15 @@ const gridData = [
     image: '../Guide GO Pictures/studAccDiv.jpg',
     title: 'ACCOUNTING',
     details:
-      'Main building, lower ground floor\nFrom the canteen, proceed forward and turn left. Located between the textbook section and cashier.\n\nIts primary function is to oversee financial records, billing processes, and student account management.',
+      'Main building, lower ground floor.\n\nFrom the canteen, proceed forward and turn left. Located between the textbook section and cashier.\n\nIts primary function is to oversee financial records, billing processes, and student account management.',
   },
 
   {
     id: 2,
     image: '../Guide GO Pictures/cashierOffice.jpg',
-    title: 'CASHIER OFFICE',
+    title: 'CASHIER',
     details:
-      'Main building, lower ground floor\nFrom the canteen, proceed forward and turn left. Located between the cashier and clinic.\n\nIts primary function is to facilitate payment transactions, including tuition fees, miscellaneous fees, and other financial obligations.',
+      'Main building, lower ground floor.\n\nFrom the canteen, proceed forward and turn left. Located between the cashier and clinic.\n\nIts primary function is to facilitate payment transactions, including tuition fees, miscellaneous fees, and other financial obligations.',
   },
 
   {
@@ -20,39 +20,39 @@ const gridData = [
     image: '../Guide GO Pictures/collegeReg.jpg',
     title: 'COLLEGE REGISTRAR',
     details:
-      'Main building, lower ground floor\nFrom the canteen, proceed straight across the quadrangle to reach the College Registrar. \n\nIts primary function is to manage and maintain student records, including enrollment, academic transcripts, and other official academic document.',
+      'Main building, lower ground floor.\n\nFrom the canteen, proceed straight across the quadrangle to reach the College Registrar.\n\nIts primary function is to manage and maintain student records, including enrollment, academic transcripts, and other official academic document specifically for college students.',
   },
 
   {
     id: 4,
     image: '../Guide GO Pictures/civilSecUnit.jpg',
-    title: 'CIVIL SECURITY UNIT',
+    title: 'CIVIL SECURITY UNIT (CSU)',
     details:
-      'The Civil Security Unit is located at Gate 4. It is immediately visible upon entering and is situated beside the entrance. Its front directly faces the quadrangle or basketball court.',
+      'Main building, lower ground floor.\n\nLocated near Gate 4. It is immediately visible upon entering and is situated beside the entrance. Its front directly faces the quadrangle.',
   },
 
   {
     id: 5,
-    image: '../Guide GO Pictures/collegeGuidance.jpg',
-    title: 'COLLEGE GUIDANCE',
+    image: '../Guide GO Pictures/textbookSec.jpg',
+    title: 'TEXTBOOK SECTION',
     details:
-      'The College Guidance Office is located on the first floor, at the mezzanine level.',
+      'Main building, lower ground floor.\n\nLocated on the right side of the Accounting Office.\n\nIt serves as the designated area for the purchase of required textbooks.',
   },
 
   {
     id: 6,
-    image: '../Guide GO Pictures/collegeReg.jpg',
-    title: 'COLLEGE REGISTRAR',
+    image: '../Guide GO Pictures/senHighOffice.jpg',
+    title: 'SENIOR HIGH SCHOOL REGISTRAR',
     details:
-      '- The College Registrar is located on the lower ground floor of the main building at the University of Cebu Main Campus. It is situated near the basketball court and can be found on the left side of the court area.',
+      'Main building, lower ground floor.\n\nIt can also be accessed through Gate 4 for a more convenient entry. It is between the Civil Security Unit (CSU) and the College Registrar’s.\n\nThe Senior High School Registrar is responsible for managing student records, enrollment, and academic documentation specifically for senior high school students.',
   },
 
   {
     id: 7,
-    image: '../Guide GO Pictures/deanOffice.jpg',
-    title: 'DEAN OFFICE',
+    image: '../Guide GO Pictures/eteeap.jpg',
+    title: 'ETEEAP OFFICE',
     details:
-      'The Dean’s Office is located on the 5th floor of the building. It is where assessments and other academic requirements are processed. It can be found on the right side of the MultiMedia Laboratory.',
+      'Main building, lower ground floor.\n\nIt is beside the canteen and directly across from the textbook area.\n\nThe ETEEAP Office is responsible for managing the Expanded Tertiary Education Equivalency and Accreditation Program (ETEEAP), which provides opportunities for individuals to earn a degree based on their work experience and prior learning.',
   },
 
   {
@@ -60,102 +60,102 @@ const gridData = [
     image: '../Guide GO Pictures/edpOffice.jpg',
     title: 'EDP / IT OFFICE',
     details:
-      'The EDP Office is located on the ground floor on the right side of the basketball court or quadrangle.',
+      "Main building, lower ground floor.\n\nStanding at the ground floor canteen and facing the college registrar, you will find the EDP/IT office on the left side of the quadrangle, beside the study hall.\n\nThis is where you can get your ID and It is a living, digital, or paper-based document that tracks a student's interests, skills, and career goals.",
   },
 
   {
     id: 9,
-    image: '../Guide GO Pictures/eteeap.jpg',
-    title: 'ETEEAP OFFICE',
+    image: '../Guide GO Pictures/univClinic.jpg',
+    title: 'UNIVERSITY CLINIC',
     details:
-      'The ETEEAP Office is located on the ground floor. It is beside the canteen and directly across from the textbook area.',
+      'Main building, lower ground floor.\n\nLocated beside the College Registrar and is right across the Senior High School Registrar.\n\nIts primary function is to provide basic medical services, first aid, and health assistance to students and staff.',
   },
 
   {
     id: 10,
-    image: '../Guide GO Pictures/faculty.jpg',
-    title: 'FACULTY ROOM',
+    image: '../Guide GO Pictures/collegeGuidance.jpg',
+    title: 'COLLEGE GUIDANCE SERVICES CENTER',
     details:
-      'The Faculty Room is located on the 5th floor, next to the Dean’s Office.',
+      'Main building, upper ground floor (Mezzanine).\n\nAccess using the stairs located near College Registrar. At the back of the chapel, you will find the College Guidance Office.\n\nIt is responsible for providing counseling services, academic advising, and support to students in their personal and academic development.',
   },
 
   {
     id: 11,
-    image: '../Guide GO Pictures/imsOffice.jpg',
-    title: 'IMS OFFICE',
+    image: '../Guide GO Pictures/chapel.jpg',
+    title: 'CHAPEL',
     details:
-      'The IMS Office is located on the first floor, at the mezzanine level. It is near the Activity Center and can also be accessed when entering through Gate 3.',
+      'Main building, upper ground floor (Mezzanine).\n\nAccess using the stairs located near College Registrar.\n\nThe Chapel is a place of worship and spiritual reflection for students, faculty, and staff. It serves as a venue for religious services, ceremonies, and other spiritual activities within the university community.',
   },
 
   {
     id: 12,
-    image: '../Guide GO Pictures/mainLib.jpg',
-    title: 'LIBRARY',
+    image: '../Guide GO Pictures/campMinistry.jpg',
+    title: 'CAMPUS MINISTRY OFFICE',
     details:
-      '- The Library is located on the 3rd floor of the building. From the food court area, you need to go down to the 3rd floor. It is situated near the stairs. It can be found beside or close to the staircase area.',
+      'Main building, upper ground floor (Mezzanine).\n\nAccess using the stairs located near College Registrar, directly across from the Chapel.\n\nThe Campus Ministry Office is responsible for organizing and coordinating religious and spiritual activities on campus. It provides support and resources for students, faculty, and staff in their spiritual growth and development.',
   },
 
   {
     id: 13,
-    image: '../Guide GO Pictures/nstpcwtsOffice.jpg',
-    title: 'NSTP OFFICE',
+    image: '../Guide GO Pictures/imsOffice.jpg',
+    title: 'IMS OFFICE',
     details:
-      '- The NSTP Office is located outside the main building of the University of Cebu Main Campus, directly across from the Engineering Building. Upon entering, the Scholarship Office can be found inside. On the right side, next to the SAO, is the NSTP Office.',
+      'Main building, upper ground floor (Mezzanine).\n\nAccess using the stairs located near Gate 2.\n\n The IMS Office is responsible for managing and maintaining the university’s information management systems, including student records, academic data, and other administrative information.',
   },
 
   {
     id: 14,
-    image: '../Guide GO Pictures/psitsOffice.jpg',
-    title: 'PSITS OFFICE',
+    image: '../Guide GO Pictures/mainLib.jpg',
+    title: 'LIBRARY',
     details:
-      'The PSIT Office is located on the 5th floor of the building. It can be found on the left side from the food court area. The office is situated near Room 540 and I.T Laboratory.',
+      'Main building, 3rd floor.\n\nFrom the canteen, turn right, then take the stairs or elevator and stop at the 3rd floor. After that, turn left and go straight.\n\nThis is where you can find digital materials maintained for reading, study, or research. It is usually a room or digital space where items are available to borrow or use on-site, often with staff support. Libraries can also refer to a specific set of published materials (e.g., a “library of classics”) or a collection of computer software code.',
   },
 
   {
     id: 15,
-    image: '../Guide GO Pictures/scholarshipOffice.jpg',
-    title: 'SCHOLARSHIP OFFICE',
+    image: '../Guide GO Pictures/deanOffice.jpg',
+    title: "DEAN'S OFFICE",
     details:
-      '- The Scholarship Office is located outside the main building of the University of Cebu Main Campus, directly across from the Engineering Building. It is situated in the same area as the SAO and NSTP Offices. It can be found on the left side of the SAO Office.',
+      'Main building, 5th floor beside room 526.\n\nThis is where you get your assessment silp and It oversees academic policies, budgets, hiring, and curriculum. Additionally, it handles student services like advising, discipline, withdrawals, and graduation',
   },
 
   {
     id: 16,
-    image: '../Guide GO Pictures/senHighOffice.jpg',
-    title: 'SENIOR HIGH SCHOOL OFFICE',
+    image: '../Guide GO Pictures/faculty.jpg',
+    title: 'FACULTY ROOM',
     details:
-      'The Senior High School Office is located on the ground floor. It can also be accessed through Gate 4 for a more convenient entry. It is beside the Civil Security Unit, while the Registrar’s Office is located nearby.',
+      "Main building, 5th floor beside Dean's Office.\n\nThe Faculty Room is a designated space for faculty members to work, collaborate, and hold meetings. It serves as a common area for professors and instructors to discuss academic matters, share resources, and engage in professional development activities.",
   },
 
   {
     id: 17,
-    image: '../Guide GO Pictures/sao.jpg',
-    title: 'STUDENT AFFAIR OFFICE',
+    image: '../Guide GO Pictures/psitsOffice.jpg',
+    title: 'PSITS OFFICE',
     details:
-      '- The SAO is also located outside the main building of the University of Cebu Main Campus, directly across from the Engineering Building. It is situated beside the Scholarship Office.',
+      'Main building, 5th floor beside room 540.\n\nPhilippine Society of Information Technology Students (PSITS) is a student body organization supporting students enrolled in BSIT main campus. Leading the students into an efficient academic and non academic journey. ',
   },
 
   {
     id: 18,
-    image: '../Guide GO Pictures/textbookSec.jpg',
-    title: 'TEXTBOOK SECTION',
+    image: '../Guide GO Pictures/scholarshipOffice.jpg',
+    title: 'SCHOLARSHIP OFFICE',
     details:
-      '- The Bookstore is located on the right side of the Accounting Office on the lower ground floor of the main building at the University of Cebu Main Campus. From the Accounting Office, you only need to walk straight a short distance to immediately see the Bookstore.',
+      'Located inside the Gotianuy building\n(right across the new engineering building).\n\nOn the ground floor, the first window on the left side. Right after entering the building the scholarship office will be seen.\n\nQueries about the students scholarship will be entertained here.',
   },
 
   {
     id: 19,
-    image: '../Guide GO Pictures/campMinistry.jpg',
-    title: 'THE CAMPUS MINISTRY OFFICE',
+    image: '../Guide GO Pictures/sao.jpg',
+    title: 'STUDENT AFFAIR OFFICE (SAO)',
     details:
-      'The Campus Ministry Office is located on the first floor (mezzanine level), directly across from the chapel.',
+      "Located inside the Gotianuy building\n(right across the new engineering building).\n\nOn the ground floor, the second window on the left side.\n\nSupports students' non-academic needs, fostering holistic development through campus activities, student leadership training, and welfare services.",
   },
 
   {
     id: 20,
-    image: '../Guide GO Pictures/univClinic.jpg',
-    title: 'UNIVERSITY CLINIC',
+    image: '../Guide GO Pictures/nstpcwtsOffice.jpg',
+    title: 'NSTP OFFICE',
     details:
-      'The University Clinic is located on the ground floor, between the Registrar’s Office and the Cashier’s Office.',
+      'Located inside the Gotianuy building\n(right across the new engineering building).\n\nOn the ground floor, the last window on the left side. A big NSTP sign can be seen under its window.\n\nAll NSTP related queries will be entertained here.',
   },
 ];

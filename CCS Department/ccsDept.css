@@ -503,6 +503,21 @@ body {
     width: 10px;
     height: 10px;
   }
+  .uc-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .uc-modal-content img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+
+  .uc-modal-content h3 {
+    font-size: 18px;
+  }
 }
 
 /*Modal*/
