@@ -67,7 +67,10 @@
             id="date"
             type="text"
             placeholder="mm/dd/yyyy"
-            onfocus="this.type = 'date'"
+            onclick="
+              this.type = 'date';
+              this.click();
+            "
             onblur="if (!this.value) this.type = 'text';"
             onchange="
               this.type = 'text';
