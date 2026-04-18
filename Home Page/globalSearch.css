@@ -59,7 +59,7 @@
 }
 
 .modal-left::before {
-  content: "";
+  content: '';
   position: flex;
   top: 0;
   left: 0;

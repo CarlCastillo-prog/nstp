@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Image Grid Modal Functionality
   const imageGrid = document.getElementById('imageGrid');
   const modal = document.getElementById('imageModal');
@@ -10,18 +10,52 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeBtn = document.getElementById('closeModal');
 
   let currentIndex = 0;
+  let filteredData = [...gridData]; // Tracks currently visible items
 
-  // Populate grid with numbered items
-  function createGrid() {
-    gridData.forEach((item, index) => {
+  // ── Search / Filter ──────────────────────────────────────────────────────────
+  function initSearch() {
+    const searchInput = document.getElementById('cardSearch');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      filteredData = query
+        ? gridData.filter(
+            (item) =>
+              item.title.toLowerCase().includes(query) ||
+              (item.details && item.details.toLowerCase().includes(query)),
+          )
+        : [...gridData];
+
+      renderGrid();
+    });
+  }
+
+  // ── Grid rendering ───────────────────────────────────────────────────────────
+  function renderGrid() {
+    imageGrid.innerHTML = '';
+
+    if (filteredData.length === 0) {
+      imageGrid.innerHTML =
+        '<p class="no-results">No cards match your search.</p>';
+      return;
+    }
+
+    filteredData.forEach((item, index) => {
       const gridItem = document.createElement('div');
       gridItem.className = 'grid-item';
       gridItem.innerHTML = `<span class="item-number">${item.title}</span>`;
-      gridItem.onclick = () => openModal(index);
+      gridItem.onclick = () => openModal(index); // index into filteredData
       imageGrid.appendChild(gridItem);
     });
   }
 
+  // Kept for backwards-compatibility (called nowhere else, but safe to keep)
+  function createGrid() {
+    renderGrid();
+  }
+
+  // ── Modal ────────────────────────────────────────────────────────────────────
   function openModal(index) {
     currentIndex = index;
     updateModal();
@@ -35,33 +69,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateModal() {
-  const item = gridData[currentIndex];
-  modalImage.style.opacity = 0;
+    const item = filteredData[currentIndex]; // use filteredData
+    modalImage.style.opacity = 0;
 
-  const img = new Image();
-  img.src = item.image;
+    const img = new Image();
+    img.src = item.image;
+    img.onload = () => {
+      modalImage.src = item.image;
+      modalImage.style.opacity = 1;
+    };
 
-  img.onload = () => {
-    modalImage.src = item.image;
-    modalImage.style.opacity = 1;
-  };
-
-  modalImage.alt = item.title;
-  modalTitle.textContent = item.title;
-  modalDetails.textContent = item.details;
-}
+    modalImage.alt = item.title;
+    modalTitle.textContent = item.title;
+    modalDetails.textContent = item.details;
+  }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % gridData.length;
+    currentIndex = (currentIndex + 1) % filteredData.length;
     updateModal();
   }
 
   function prevImage() {
-    currentIndex = (currentIndex - 1 + gridData.length) % gridData.length;
+    currentIndex =
+      (currentIndex - 1 + filteredData.length) % filteredData.length;
     updateModal();
   }
 
-  // Event Listeners
+  // ── Event listeners ──────────────────────────────────────────────────────────
   if (prevBtn) prevBtn.onclick = prevImage;
   if (nextBtn) nextBtn.onclick = nextImage;
   if (closeBtn) closeBtn.onclick = closeModal;
@@ -77,27 +111,25 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'ArrowLeft') prevImage();
   });
 
-  // Touch/Swipe support for modal
+  // Touch / swipe support
   let startX = 0;
   modal.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
-
   modal.addEventListener('touchend', (e) => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) nextImage();
-      else prevImage();
-    }
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
   });
+
   function preloadImages(data) {
-  data.forEach(item => {
-    const img = new Image();
-    img.src = item.image;
-  });
-}
-  // Initialize
+    data.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────────────────
   createGrid();
   preloadImages(gridData);
+  initSearch();
 });
