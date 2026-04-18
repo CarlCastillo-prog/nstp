@@ -69,6 +69,10 @@
             placeholder="mm/dd/yyyy"
             onfocus="this.type = 'date'"
             onblur="if (!this.value) this.type = 'text';"
+            onchange="
+              this.type = 'text';
+              this.value = this.value;
+            "
           />
           <select id="category">
             <option value="wallet">Wallet</option>
