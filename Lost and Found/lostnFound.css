@@ -120,41 +120,6 @@ body {
   flex: 1;
 }
 
-.search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  color: #ffffff;
-  padding: 15px 25px;
-  border-radius: 30px;
-  font-size: 16px;
-  min-width: 350px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.search:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.search input {
-  color: white;
-  border: none;
-  outline: none;
-  background: none;
-  flex: 1;
-  font-size: 16px;
-}
-
-.search input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-  opacity: 1;
-}
-
 /*ACTION BAR*/
 .action-bar {
   margin: 20px 0;
@@ -463,6 +428,36 @@ option {
   font-size: 14px;
   background: rgba(255, 255, 255, 0.9);
   color: #333;
+}
+
+.modal-content input[type='date'] {
+  color: #333;
+  -webkit-text-fill-color: #333; /* iOS Safari fix */
+}
+
+.modal-content input[type='date']::-webkit-datetime-edit {
+  color: #333;
+  -webkit-text-fill-color: #333;
+}
+
+.modal-content input[type='date']::-webkit-datetime-edit-fields-wrapper {
+  color: #333;
+}
+
+.modal-content input[type='date']::-webkit-datetime-edit-text {
+  color: #333;
+}
+
+.modal-content input[type='date']::-webkit-datetime-edit-month-field,
+.modal-content input[type='date']::-webkit-datetime-edit-day-field,
+.modal-content input[type='date']::-webkit-datetime-edit-year-field {
+  color: #333;
+  -webkit-text-fill-color: #333;
+}
+
+.modal-content input[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .modal-content select {
