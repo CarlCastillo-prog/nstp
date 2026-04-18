@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
 
-          // ✅ Single encode — no loop, no binary search
           const result = canvas.toDataURL('image/jpeg', 0.5);
           resolve(result);
         };
