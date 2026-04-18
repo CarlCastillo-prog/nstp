@@ -87,13 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================= DATE INPUT ENHANCEMENT =================
   const dateInput = document.getElementById('date');
   if (dateInput) {
+    // Open date picker on focus (modern browsers)
     dateInput.addEventListener('focus', function () {
-      this.showPicker(); // Opens date picker on focus (modern browsers)
+      try {
+        this.showPicker();
+      } catch (e) {
+        // showPicker() not supported on older/iOS browsers — falls back to native tap
+      }
     });
 
+    // Force iOS Safari to show the date text after selection
     dateInput.addEventListener('change', function () {
-      const wrapper = this.closest('.date-wrapper');
-      const placeholder = wrapper.querySelector('.date-placeholder');
+      this.style.color = '#333';
+      this.style.webkitTextFillColor = '#333';
     });
   }
 
