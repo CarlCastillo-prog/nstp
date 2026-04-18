@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // SAVE TO FIREBASE
-  function compressImage(file, maxSizeKB = 200) {
+  function compressImage(file, maxSizeKB = 150) {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -123,17 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
         img.onload = () => {
           const canvas = document.createElement('canvas');
 
-          // Resize
+          // ✅ Aggressively shrink first
           let width = img.width;
           let height = img.height;
-          const maxDim = 600; // reduced from 800 for faster processing
+          const maxDim = 400; // smaller = faster encoding
 
-          if (width > maxDim || height > maxDim) {
-            if (width > height) {
-              height = (height / width) * maxDim;
+          if (width > height) {
+            if (width > maxDim) {
+              height = Math.round((height / width) * maxDim);
               width = maxDim;
-            } else {
-              width = (width / height) * maxDim;
+            }
+          } else {
+            if (height > maxDim) {
+              width = Math.round((width / height) * maxDim);
               height = maxDim;
             }
           }
@@ -144,22 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
 
-          // ✅ Binary search instead of slow while loop
-          let low = 0.1,
-            high = 0.8,
-            best = '';
-          for (let i = 0; i < 5; i++) {
-            // max 5 iterations instead of unlimited
-            const mid = (low + high) / 2;
-            const result = canvas.toDataURL('image/jpeg', mid);
-            if (result.length <= maxSizeKB * 1024 * 1.37) {
-              best = result;
-              low = mid; // try higher quality
-            } else {
-              high = mid; // too big, reduce
-            }
-          }
-          resolve(best || canvas.toDataURL('image/jpeg', 0.1));
+          // ✅ Single encode — no loop, no binary search
+          const result = canvas.toDataURL('image/jpeg', 0.5);
+          resolve(result);
         };
         img.src = e.target.result;
       };
