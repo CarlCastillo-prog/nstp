@@ -114,7 +114,7 @@ const gridData = [
   {
     id: 15,
     image: '../Guide GO Pictures/deanOffice.jpg',
-    title: "DEAN'S OFFICE",
+    title: "DEAN'S OFFICE (CCS)",
     details:
       'Main building, 5th floor beside room 526.\n\nThis is where you get your assessment silp and It oversees academic policies, budgets, hiring, and curriculum. Additionally, it handles student services like advising, discipline, withdrawals, and graduation',
   },
@@ -122,7 +122,7 @@ const gridData = [
   {
     id: 16,
     image: '../Guide GO Pictures/faculty.jpg',
-    title: 'FACULTY ROOM',
+    title: 'FACULTY ROOM (CCS)',
     details:
       "Main building, 5th floor beside Dean's Office.\n\nThe Faculty Room is a designated space for faculty members to work, collaborate, and hold meetings. It serves as a common area for professors and instructors to discuss academic matters, share resources, and engage in professional development activities.",
   },

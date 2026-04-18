@@ -387,7 +387,7 @@ body {
 .crsl-btn,
 .crsl-btn2 {
   position: absolute;
-  top: 45%; /* aligns with cards */
+  top: 34.5%; /* aligns with cards */
   transform: translateY(-50%);
 
   width: 55px;

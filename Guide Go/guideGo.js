@@ -14,17 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── Search / Filter ──────────────────────────────────────────────────────────
   function initSearch() {
-    const searchInput = document.getElementById('cardSearch');
+    const searchInput = document.getElementById('guideSearch');
     if (!searchInput) return;
 
     searchInput.addEventListener('input', function () {
       const query = this.value.trim().toLowerCase();
       filteredData = query
-        ? gridData.filter(
-            (item) =>
-              item.title.toLowerCase().includes(query) ||
-              (item.details && item.details.toLowerCase().includes(query)),
-          )
+        ? gridData.filter((item) => item.title.toLowerCase().includes(query))
         : [...gridData];
 
       renderGrid();
