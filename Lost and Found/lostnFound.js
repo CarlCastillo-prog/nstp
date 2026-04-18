@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Force iOS Safari to show the date text after selection
     dateInput.addEventListener('change', function () {
       this.style.color = '#333';
       this.style.webkitTextFillColor = '#333';
@@ -116,6 +115,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // SAVE TO FIREBASE
+  function compressImage(file, maxSizeKB = 200) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+
+          // Resize if too large
+          let width = img.width;
+          let height = img.height;
+          const maxDim = 800;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = (height / width) * maxDim;
+              width = maxDim;
+            } else {
+              width = (width / height) * maxDim;
+              height = maxDim;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Compress quality until under size limit
+          let quality = 0.7;
+          let result = canvas.toDataURL('image/jpeg', quality);
+
+          while (result.length > maxSizeKB * 1024 * 1.37 && quality > 0.1) {
+            quality -= 0.1;
+            result = canvas.toDataURL('image/jpeg', quality);
+          }
+
+          resolve(result);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   saveBtn.addEventListener('click', async () => {
     const name = document.getElementById('itemName').value.trim();
     const location = document.getElementById('itemLocation').value.trim();
@@ -141,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
           itemType: status,
           date: date,
           category: category,
-          image: imageData, // 🔥 image saved here
+          image: imageData,
           status: 'pending',
           createdAt: new Date(),
         });
@@ -157,14 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       if (file) {
-        const reader = new FileReader();
-
-        reader.onload = async function () {
-          const imageData = reader.result; // base64 image
-          await saveData(imageData);
-        };
-
-        reader.readAsDataURL(file);
+        const compressed = await compressImage(file);
+        await saveData(compressed);
       } else {
         // no image uploaded
         await saveData('');
