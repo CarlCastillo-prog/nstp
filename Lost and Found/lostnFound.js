@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateInput = document.getElementById('date');
   if (dateInput) {
     // Open date picker on focus (modern browsers)
-    dateInput.addEventListener('focus', function () {
+    dateInput.addEventListener('date', function () {
       try {
         this.showPicker();
       } catch (e) {
