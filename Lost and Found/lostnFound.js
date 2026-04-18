@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
         img.onload = () => {
           const canvas = document.createElement('canvas');
 
-          // Resize if too large
+          // Resize
           let width = img.width;
           let height = img.height;
-          const maxDim = 800;
+          const maxDim = 600; // reduced from 800 for faster processing
 
           if (width > maxDim || height > maxDim) {
             if (width > height) {
@@ -144,16 +144,22 @@ document.addEventListener('DOMContentLoaded', () => {
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
 
-          // Compress quality until under size limit
-          let quality = 0.7;
-          let result = canvas.toDataURL('image/jpeg', quality);
-
-          while (result.length > maxSizeKB * 1024 * 1.37 && quality > 0.1) {
-            quality -= 0.1;
-            result = canvas.toDataURL('image/jpeg', quality);
+          // ✅ Binary search instead of slow while loop
+          let low = 0.1,
+            high = 0.8,
+            best = '';
+          for (let i = 0; i < 5; i++) {
+            // max 5 iterations instead of unlimited
+            const mid = (low + high) / 2;
+            const result = canvas.toDataURL('image/jpeg', mid);
+            if (result.length <= maxSizeKB * 1024 * 1.37) {
+              best = result;
+              low = mid; // try higher quality
+            } else {
+              high = mid; // too big, reduce
+            }
           }
-
-          resolve(result);
+          resolve(best || canvas.toDataURL('image/jpeg', 0.1));
         };
         img.src = e.target.result;
       };
@@ -195,10 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
         showAlert('Saved successfully! Thank you for reporting.');
 
         // clear form
-        document.getElementById('itemName').value = '';
-        document.getElementById('itemLocation').value = '';
-        document.getElementById('date').value = '';
-        document.getElementById('itemImage').value = '';
+        setTimeout(() => {
+          document.getElementById('itemName').value = '';
+          document.getElementById('itemLocation').value = '';
+          document.getElementById('date').value = '';
+          document.getElementById('itemImage').value = '';
+          document.getElementById('fileName').textContent = 'No file chosen';
+          modal.classList.remove('show');
+        }, 1000);
       };
 
       if (file) {
