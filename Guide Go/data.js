@@ -4,7 +4,7 @@ const gridData = [
     image: '../Guide GO Pictures/studAccDiv.jpg',
     title: 'ACCOUNTING',
     details:
-      '- The Accounting Office is located on the lower ground floor of the main building at the University of Cebu Main Campus. It is on the right side of the basketball court, near the Cashier’s Office and the Bookstore area, which are located close to each other in the same section.',
+      'Main building, lower ground floor\nFrom the canteen, proceed forward and turn left. Located between the textbook section and cashier.\n\nIts primary function is to oversee financial records, billing processes, and student account management.',
   },
 
   {
@@ -12,15 +12,15 @@ const gridData = [
     image: '../Guide GO Pictures/cashierOffice.jpg',
     title: 'CASHIER OFFICE',
     details:
-      '- The Cashier’s Office is located on the lower ground floor of the main building at the University of Cebu Main Campus. It is situated on the left side of the Accounting Office.',
+      'Main building, lower ground floor\nFrom the canteen, proceed forward and turn left. Located between the cashier and clinic.\n\nIts primary function is to facilitate payment transactions, including tuition fees, miscellaneous fees, and other financial obligations.',
   },
 
   {
     id: 3,
-    image: '../Guide GO Pictures/chapel.jpg',
-    title: 'CHAPEL',
+    image: '../Guide GO Pictures/collegeReg.jpg',
+    title: 'COLLEGE REGISTRAR',
     details:
-      'The Chapel is located on the first floor (mezzanine level), above the Registrar’s Office.',
+      'Main building, lower ground floor\nFrom the canteen, proceed straight across the quadrangle to reach the College Registrar. \n\nIts primary function is to manage and maintain student records, including enrollment, academic transcripts, and other official academic document.',
   },
 
   {

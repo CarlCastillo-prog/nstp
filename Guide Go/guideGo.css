@@ -716,8 +716,7 @@ body {
   gap: 20px;
 }
 
-.nav-btn,
-.close-btn {
+.nav-btn {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -735,15 +734,53 @@ body {
 }
 
 .nav-btn:hover {
-  background: rgba(207, 194, 169, 0.8);
+  background: #f7c873;
   transform: scale(1.15);
-  box-shadow: 0 10px 30px rgba(247, 200, 115, 0.4);
+  box-shadow: 0 0px 30px rgba(247, 200, 115, 0.4);
 }
+
+.close-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(134, 131, 131, 0.137);
+  color: white;
+  font-size: 0;
+  cursor: pointer;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.close-btn::before,
+.close-btn::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+}
+
+.close-btn::before {
+  transform: rotate(45deg);
+}
+
+.close-btn::after {
+  transform: rotate(-45deg);
+}
+
 .close-btn:hover {
   background: rgba(255, 50, 50, 0.9);
   border-color: rgba(255, 80, 80, 0.8);
   transform: rotate(90deg) scale(1.1);
-  box-shadow: 0 12px 35px rgba(255, 50, 50, 0.4);
+  box-shadow: 0 0px 35px rgba(255, 50, 50, 0.4);
 }
 
 /* RESPONSIVE */
@@ -863,7 +900,6 @@ body {
   .close-btn {
     width: 45px;
     height: 45px;
-    font-size: 18px;
   }
 
   .sidebar {
