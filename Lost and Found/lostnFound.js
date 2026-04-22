@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     dateInput.addEventListener('change', function () {
+      // Format the value nicely and keep as date type
       this.style.color = '#333';
       this.style.webkitTextFillColor = '#333';
     });
@@ -125,9 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
+
+          // ✅ Aggressively shrink first
           let width = img.width;
           let height = img.height;
-          const maxDim = 400;
+          const maxDim = 400; // smaller = faster encoding
+
           if (width > height) {
             if (width > maxDim) {
               height = Math.round((height / width) * maxDim);
