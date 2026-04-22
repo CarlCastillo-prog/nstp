@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Campus Tech Assist</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
-
-    <!-- ICON -->
     <link rel="icon" type="image/png" href="../Main Picture/mainPic.png" />
-
-    <!-- Icons -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -47,7 +41,7 @@
     <!-- MAIN CONTENT -->
     <div class="main">
       <div class="header">
-        <h2>HOME</h2>
+        <h2>Home</h2>
         <div class="controls">
           <div class="search-container">
             <i class="fa fa-search"></i>
@@ -58,13 +52,14 @@
 
       <!-- CAROUSEL -->
       <div class="carousel-container">
-        <!-- CRSL BUTTON LEFT -->
         <button class="crsl-btn"><i class="fas fa-chevron-left"></i></button>
 
         <div class="carousel-track">
           <div
             class="carousel-slide"
-            onclick="openUCModal('../UC MVH/ucMission.png', 'UC Mission')"
+            onclick="
+              openUCModal('../UC MVH/ucMission.png', 'UC Mission', false)
+            "
           >
             <div
               class="slide-avatar"
@@ -75,7 +70,7 @@
 
           <div
             class="carousel-slide"
-            onclick="openUCModal('../UC MVH/ucVision.png', 'UC Vision')"
+            onclick="openUCModal('../UC MVH/ucVision.png', 'UC Vision', false)"
           >
             <div
               class="slide-avatar"
@@ -86,7 +81,7 @@
 
           <div
             class="carousel-slide"
-            onclick="openUCModal('../UC MVH/ucGoals.png', 'UC Goals')"
+            onclick="openUCModal('../UC MVH/ucGoals.png', 'UC Goals', false)"
           >
             <div
               class="slide-avatar"
@@ -97,7 +92,7 @@
 
           <div
             class="carousel-slide"
-            onclick="openUCModal('../UC MVH/ucHymn.png', 'UC Hymn')"
+            onclick="openUCModal('../UC MVH/ucHymn.png', 'UC Hymn', true)"
           >
             <div
               class="slide-avatar"
@@ -107,7 +102,6 @@
           </div>
         </div>
 
-        <!-- CRSL BUTTON RIGHT -->
         <button class="crsl-btn2" id="crsl">
           <i class="fas fa-chevron-right"></i>
         </button>
@@ -120,20 +114,31 @@
         </div>
       </div>
 
-      <!-- Modal -->
+      <!-- UC MODAL -->
       <div id="uc-modal" class="uc-modal">
         <div class="uc-modal-overlay"></div>
         <div class="uc-modal-content">
-          <button class="uc-modal-close" onclick="closeUCModal()">
-            <i class="fas fa-times"></i>
-          </button>
           <img id="uc-modal-img" src="" alt="" />
           <h3 id="uc-modal-title"></h3>
+          <div class="uc-modal-footer">
+            <button class="uc-modal-btn" onclick="prevUCModal()">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button
+              class="uc-modal-btn uc-modal-close"
+              onclick="closeUCModal()"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+            <button class="uc-modal-btn" onclick="nextUCModal()">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Lightbox Container -->
+    <!-- Lightbox -->
     <div id="image-lightbox" style="display: none">
       <div class="lightbox-overlay">
         <div class="lightbox-content">
@@ -144,7 +149,6 @@
       </div>
     </div>
 
-    <!-- JS -->
     <script src="script.js"></script>
     <script src="Search/searchIndex.js"></script>
     <script src="Home Page/globalSearch.js"></script>

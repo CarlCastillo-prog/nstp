@@ -29,13 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const indicators = document.querySelectorAll('.indicator');
 
   let currentIndex = 0;
-  const slideWidth = 205;
 
   function updateCarousel() {
     const containerWidth = container.offsetWidth;
     const slideWidth = slides[currentIndex].offsetWidth;
 
-    // Calculate where the active slide starts (sum of all previous slides + gaps)
+    // Calculate the starting position
     let slideStart = 0;
     for (let i = 0; i < currentIndex; i++) {
       slideStart += slides[i].offsetWidth + 25; // 25 = gap
@@ -87,19 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================= DATE INPUT ENHANCEMENT =================
   const dateInput = document.getElementById('date');
   if (dateInput) {
-    // Open date picker on focus (modern browsers)
-    dateInput.addEventListener('focus', function () {
-      try {
-        this.showPicker();
-      } catch (e) {
-        // showPicker() not supported on older/iOS browsers — falls back to native tap
-      }
-    });
-
-    dateInput.addEventListener('change', function () {
-      this.style.color = '#333';
-      this.style.webkitTextFillColor = '#333';
-    });
   }
 
   // OPEN
@@ -122,12 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-
-          // ✅ Aggressively shrink first
           let width = img.width;
           let height = img.height;
-          const maxDim = 400; // smaller = faster encoding
-
+          const maxDim = 400;
           if (width > height) {
             if (width > maxDim) {
               height = Math.round((height / width) * maxDim);
@@ -158,12 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
   saveBtn.addEventListener('click', async () => {
     const name = document.getElementById('itemName').value.trim();
     const location = document.getElementById('itemLocation').value.trim();
-    const status = document.getElementById('itemType').value;
-    const date = document.getElementById('date').value;
     const category = document.getElementById('category').value;
+    const date = document.getElementById('date').value;
     const file = document.getElementById('itemImage').files[0];
 
-    console.log('FORM DATA:', { name, location, status, date, category });
+    console.log('FORM DATA:', { name, location, category, date });
 
     if (!name || !location || !date) {
       showAlert('Please fill all required fields!');

@@ -17,9 +17,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const container = document.getElementById("walletContainer");
+const container = document.getElementById("foundContainer");
 
-function loadWalletItems() {
+function loadFoundItems() {
   onSnapshot(collection(db, "reports"), (snapshot) => {
     container.innerHTML = "";
     let count = 0;
@@ -28,10 +28,9 @@ function loadWalletItems() {
       const item = docSnap.data();
 
       const category = (item.category || "").trim().toLowerCase();
-      const status = (item.status || "").trim().toLowerCase();
 
-      if (status !== "approved") return;
-      if (category !== "wallet") return;
+      if (item.status !== "approved") return;
+      if (item.category !== "found") return;
 
       count++;
 
@@ -39,17 +38,15 @@ function loadWalletItems() {
       card.className = "item-card";
       card.style.cursor = "pointer";
 
-      // ✅ Store data here so showModal doesn't need to parse the DOM
-      card.dataset.image = item.image || "";
-      card.dataset.name = item.itemName || "";
-      card.dataset.type = item.itemType || "";
+      card.dataset.image    = item.image || "";
+      card.dataset.name     = item.itemName || "";
+      card.dataset.type     = item.itemType || "";
       card.dataset.location = item.itemLocation || "";
-      card.dataset.date = item.date || "";
+      card.dataset.date     = item.date || "";
 
       card.innerHTML = `
         <div class="slide-avatar" style="background-image:url('${item.image || ""}')"></div>
         <h4>${item.itemName || ""}</h4>
-        <p>Status: ${item.itemType || ""}</p>
         <p>Location: ${item.itemLocation || ""}</p>
         <p>Date: ${item.date || ""}</p>
       `;
@@ -59,7 +56,7 @@ function loadWalletItems() {
     });
 
     if (count === 0) {
-      container.innerHTML = "<p>No wallet items found</p>";
+      container.innerHTML = "<p>No found items available.</p>";
     }
   });
 }
@@ -68,16 +65,19 @@ function showModal(card) {
   document.getElementById("modal-img").src = card.dataset.image;
   document.getElementById("modal-location").textContent = card.dataset.name;
   document.getElementById("modal-comments").textContent =
-    `Status: ${card.dataset.type}\nLocation: ${card.dataset.location}\nDate: ${card.dataset.date}`;
+    `\nLocation: ${card.dataset.location}\nDate: ${card.dataset.date}`;
 
   document.getElementById("itemModal").classList.add("active");
 }
 
+function closeModal() {
+  document.getElementById("itemModal").classList.remove("active");
+}
+
+// Click outside modal box to close
 document.addEventListener("click", (e) => {
   const modal = document.getElementById("itemModal");
-  if (e.target === modal) {
-    modal.classList.remove("active");
-  }
+  if (e.target === modal) closeModal();
 });
 
-loadWalletItems();
+loadFoundItems();

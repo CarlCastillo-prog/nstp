@@ -338,7 +338,7 @@ option {
 .crsl-btn,
 .crsl-btn2 {
   position: absolute;
-  top: 45%; /* aligns with cards */
+  top: 50%; /* aligns with cards */
   transform: translateY(-50%);
 
   width: 55px;
@@ -364,7 +364,7 @@ option {
 
 /* CRSL LEFT */
 .crsl-btn {
-  left: 20px;
+  left: 10px;
 }
 
 /* CRSL RIGHT */
@@ -520,59 +520,6 @@ option {
   font-weight: 600;
 }
 
-.modal-content input[type='date'] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: rgba(255, 255, 255, 0.9);
-  color: transparent; /* hide empty state */
-  -webkit-text-fill-color: transparent;
-  min-height: 40px;
-  width: 100%;
-  position: relative;
-}
-
-/* Show placeholder text when empty */
-.modal-content input[type='date']::before {
-  content: attr(placeholder);
-  color: #888;
-  font-size: 14px;
-  position: absolute;
-  pointer-events: none;
-}
-
-/* Once a value is picked, show the date text */
-.modal-content input[type='date'].has-value,
-.modal-content input[type='date']:valid {
-  color: #333;
-  -webkit-text-fill-color: #333;
-}
-
-.modal-content input[type='date'].has-value::before,
-.modal-content input[type='date']:valid::before {
-  display: none;
-}
-
-.modal-content input[type='date']::-webkit-datetime-edit {
-  color: #333;
-}
-.modal-content input[type='date']::-webkit-datetime-edit-fields-wrapper {
-  color: #333;
-}
-.modal-content input[type='date']::-webkit-datetime-edit-month-field {
-  color: #333;
-}
-.modal-content input[type='date']::-webkit-datetime-edit-day-field {
-  color: #333;
-}
-.modal-content input[type='date']::-webkit-datetime-edit-year-field {
-  color: #333;
-}
-.modal-content input[type='date']::-webkit-calendar-picker-indicator {
-  opacity: 1;
-  cursor: pointer;
-  filter: invert(0.3);
-}
-
 .modal-content button#saveItem {
   padding: 10px;
   border: none;
@@ -588,6 +535,29 @@ option {
 .modal-content button#saveItem:hover {
   background: #5a0880;
   transform: scale(1.03);
+}
+
+input[type='date']#date {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000000;
+  font-weight: 600;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type='date']#date:valid {
+  color: #333;
+}
+
+input[type='date']#date::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 /* FILE UPLOAD */
