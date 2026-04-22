@@ -86,6 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================= DATE INPUT ENHANCEMENT =================
   const dateInput = document.getElementById('date');
   if (dateInput) {
+    dateInput.addEventListener('focus', function () {
+      this.type = 'date';
+      try {
+        this.showPicker();
+      } catch (e) {}
+    });
+
+    dateInput.addEventListener('blur', function () {
+      if (!this.value) {
+        this.type = 'text';
+      }
+    });
+
+    dateInput.addEventListener('change', function () {
+      this.style.color = '#333';
+      this.style.webkitTextFillColor = '#333';
+    });
   }
 
   // OPEN
