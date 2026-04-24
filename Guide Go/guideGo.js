@@ -1,16 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Image Grid Modal Functionality
-  const imageGrid = document.getElementById('imageGrid');
   const modal = document.getElementById('imageModal');
   const modalImage = document.getElementById('modalImage');
+  const modalFloorPlan = document.getElementById('modalFloorPlan');
   const modalTitle = document.getElementById('modalTitle');
   const modalDetails = document.getElementById('modalDetails');
   const prevBtn = document.getElementById('prevImage');
   const nextBtn = document.getElementById('nextImage');
   const closeBtn = document.getElementById('closeModal');
+  const viewOfficeBtn = document.getElementById('viewOffice');
+  const viewNavBtn = document.getElementById('viewNav');
 
   let currentIndex = 0;
   let filteredData = [...gridData]; // Tracks currently visible items
+  let isNavView = false; // Toggle state: false = office view, true = navigation/floor plan view
+
+  const floorMap = {
+    'Ground Floor': 'grid-ground',
+    'Mezzanine Floor': 'grid-mezzanine',
+    '3rd Floor': 'grid-3rd',
+    '5th Floor': 'grid-5th',
+  };
+
+  const floorOrder = [
+    'Ground Floor',
+    'Mezzanine Floor',
+    '3rd Floor',
+    '5th Floor',
+  ];
 
   // ── Search / Filter ──────────────────────────────────────────────────────────
   function initSearch() {
@@ -29,20 +46,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── Grid rendering ───────────────────────────────────────────────────────────
   function renderGrid() {
-    imageGrid.innerHTML = '';
+    // Clear all floor grids
+    Object.values(floorMap).forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '';
+    });
 
     if (filteredData.length === 0) {
-      imageGrid.innerHTML =
-        '<p class="no-results">No cards match your search.</p>';
+      const ground = document.getElementById('grid-ground');
+      if (ground)
+        ground.innerHTML =
+          '<p class="no-results">No cards match your search.</p>';
       return;
     }
 
     filteredData.forEach((item, index) => {
+      const gridId = floorMap[item.floor];
+      const gridEl = gridId ? document.getElementById(gridId) : null;
+      if (!gridEl) return;
+
       const gridItem = document.createElement('div');
       gridItem.className = 'grid-item';
       gridItem.innerHTML = `<span class="item-number">${item.title}</span>`;
       gridItem.onclick = () => openModal(index); // index into filteredData
-      imageGrid.appendChild(gridItem);
+      gridEl.appendChild(gridItem);
+    });
+
+    // Hide empty floor sections when searching, show all when not searching
+    const query =
+      document.getElementById('guideSearch')?.value.trim().toLowerCase() || '';
+    floorOrder.forEach((floor) => {
+      const gridId = floorMap[floor];
+      const gridEl = document.getElementById(gridId);
+      const sectionEl = gridEl?.closest('.floor-section');
+      if (!sectionEl) return;
+
+      if (query && gridEl && gridEl.children.length === 0) {
+        sectionEl.style.display = 'none';
+      } else {
+        sectionEl.style.display = '';
+      }
     });
   }
 
@@ -51,9 +94,30 @@ document.addEventListener('DOMContentLoaded', function () {
     renderGrid();
   }
 
+  // ── View Toggle ──────────────────────────────────────────────────────────────
+  function setOfficeView() {
+    isNavView = false;
+    viewOfficeBtn.classList.add('active');
+    viewNavBtn.classList.remove('active');
+    updateModal();
+  }
+
+  function setNavView() {
+    isNavView = true;
+    viewNavBtn.classList.add('active');
+    viewOfficeBtn.classList.remove('active');
+    updateModal();
+  }
+
+  if (viewOfficeBtn) viewOfficeBtn.onclick = setOfficeView;
+  if (viewNavBtn) viewNavBtn.onclick = setNavView;
+
   // ── Modal ────────────────────────────────────────────────────────────────────
   function openModal(index) {
     currentIndex = index;
+    isNavView = false; // Reset to office view on open
+    if (viewOfficeBtn) viewOfficeBtn.classList.add('active');
+    if (viewNavBtn) viewNavBtn.classList.remove('active');
     updateModal();
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -66,18 +130,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateModal() {
     const item = filteredData[currentIndex]; // use filteredData
-    modalImage.style.opacity = 0;
 
-    const img = new Image();
-    img.src = item.image;
-    img.onload = () => {
-      modalImage.src = item.image;
-      modalImage.style.opacity = 1;
-    };
+    // Toggle button visibility: only show "How to Get There" if navigation exists
+    const hasNav = !!(item.navigation && item.navigation.trim());
+    const toggleEl = document.querySelector('.view-toggle');
+    if (toggleEl) {
+      toggleEl.style.display = hasNav ? 'flex' : 'none';
+    }
 
-    modalImage.alt = item.title;
-    modalTitle.textContent = item.title;
-    modalDetails.textContent = item.details;
+    if (isNavView && hasNav) {
+      // Navigation / Floor Plan View
+      modalImage.style.display = 'none';
+      modalFloorPlan.style.display = 'block';
+      modalFloorPlan.style.opacity = 0;
+
+      if (item.floorPlan) {
+        const fpImg = new Image();
+        fpImg.src = item.floorPlan;
+        fpImg.onload = () => {
+          modalFloorPlan.src = item.floorPlan;
+          modalFloorPlan.style.opacity = 1;
+        };
+        modalFloorPlan.alt = `${item.title} - Floor Plan`;
+      } else {
+        // No floor plan image available — show a placeholder message in the left panel
+        modalFloorPlan.style.display = 'none';
+        modalImage.style.display = 'flex';
+        modalImage.style.opacity = 1;
+        modalImage.src = item.image; // fallback to office image
+        modalImage.alt = item.title;
+      }
+
+      modalTitle.textContent = item.title;
+      modalDetails.textContent = item.navigation;
+    } else {
+      // Office View
+      modalFloorPlan.style.display = 'none';
+      modalImage.style.display = 'block';
+      modalImage.style.opacity = 0;
+
+      const img = new Image();
+      img.src = item.image;
+      img.onload = () => {
+        modalImage.src = item.image;
+        modalImage.style.opacity = 1;
+      };
+
+      modalImage.alt = item.title;
+      modalTitle.textContent = item.title;
+      modalDetails.textContent = item.details;
+    }
   }
 
   function nextImage() {
@@ -121,6 +223,10 @@ document.addEventListener('DOMContentLoaded', function () {
     data.forEach((item) => {
       const img = new Image();
       img.src = item.image;
+      if (item.floorPlan) {
+        const fp = new Image();
+        fp.src = item.floorPlan;
+      }
     });
   }
 

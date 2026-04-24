@@ -40,11 +40,33 @@
       <div class="section-title">Discover</div>
 
       <div class="menu">
-        <a href="../index.html">Home</a>
-        <a href="../CCS Department/ccsDept.html">CCS Department</a>
-        <a class="active" href="../Guide Go/guideGo.html">Guide Go</a>
-        <a href="../Tech Tutorial/techTut.html">Tech Tutorial</a>
-        <a href="../Lost and Found/lostnFound.html">Lost and Found</a>
+        <a href="../index.html">
+          <i class="fa-solid fa-house"></i>
+          <span class="menu-label">Home</span>
+        </a>
+        <a href="../CCS Department/ccsDept.html" data-tooltip="CCS Department">
+          <i class="fa-solid fa-building"></i>
+          <span class="menu-label">CCS Department</span>
+        </a>
+        <a
+          class="active"
+          href="../Guide Go/guideGo.html"
+          data-tooltip="Guide Go"
+        >
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span class="menu-label">Guide Go</span>
+        </a>
+        <a href="../Tech Tutorial/techTut.html" data-tooltip="Tech Tutorial">
+          <i class="fa-solid fa-computer"></i>
+          <span class="menu-label">Tech Tutorial</span>
+        </a>
+        <a
+          href="../Lost and Found/lostnFound.html"
+          data-tooltip="Lost and Found"
+        >
+          <i class="fa-solid fa-box-open"></i>
+          <span class="menu-label">Lost and Found</span>
+        </a>
       </div>
     </div>
 
@@ -67,8 +89,25 @@
         <h2 style="font-size: 2.5em; margin-bottom: 30px; text-align: center">
           Guide Gallery
         </h2>
-        <div class="image-grid" id="imageGrid">
-          <!-- Grid items populated by JS -->
+
+        <div class="floor-section">
+          <h3 class="floor-title">Ground Floor</h3>
+          <div class="image-grid" id="grid-ground"></div>
+        </div>
+
+        <div class="floor-section">
+          <h3 class="floor-title">Mezzanine Floor</h3>
+          <div class="image-grid" id="grid-mezzanine"></div>
+        </div>
+
+        <div class="floor-section">
+          <h3 class="floor-title">3rd Floor</h3>
+          <div class="image-grid" id="grid-3rd"></div>
+        </div>
+
+        <div class="floor-section">
+          <h3 class="floor-title">5th Floor</h3>
+          <div class="image-grid" id="grid-5th"></div>
         </div>
       </section>
 
@@ -77,8 +116,18 @@
         <div class="modal-content">
           <div class="modal-left">
             <img id="modalImage" src="" alt="Grid Image" />
+            <img
+              id="modalFloorPlan"
+              src=""
+              alt="Floor Plan"
+              style="display: none"
+            />
           </div>
           <div class="modal-right">
+            <div class="view-toggle">
+              <button id="viewOffice" class="toggle-btn active">Office</button>
+              <button id="viewNav" class="toggle-btn">How to Get There</button>
+            </div>
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-details" id="modalDetails"></div>
             <div class="modal-nav">

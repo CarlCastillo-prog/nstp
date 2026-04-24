@@ -1,74 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lost and Found | Campus Tech Assist</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost and Found | Campus Tech Assist</title>
+    <link rel="stylesheet" href="category_Lost.css" />
+    <link rel="icon" type="text/css" href="../Main Picture/mainPic.png" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="logo">
+        <div href="index.html../index.html" class="nav-logo">
+          <img
+            src="../Main Picture/mainPic.png"
+            alt="logo"
+            class="logo-image"
+          />
+        </div>
+        <p>Campus Tech Assist</p>
+      </div>
+      <div class="section-title">Discover</div>
+      <div class="menu">
+        <a href="../index.html" data-tooltip="Home">
+          <i class="fa-solid fa-house"></i>
+          <span class="menu-label">Home</span>
+        </a>
+        <a href="../CCS Department/ccsDept.html" data-tooltip="CCS Department">
+          <i class="fa-solid fa-building"></i>
+          <span class="menu-label">CCS Depart...</span>
+        </a>
+        <a href="../Guide Go/guideGo.html" data-tooltip="Guide Go">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span class="menu-label">Guide Go</span>
+        </a>
+        <a href="../Tech Tutorial/techTut.html" data-tooltip="Tech Tutorial">
+          <i class="fa-solid fa-computer"></i>
+          <span class="menu-label">Tech Tutorial</span>
+        </a>
+        <a
+          class="active"
+          href="../Lost and Found/lostnFound.html"
+          data-tooltip="Lost and Found"
+        >
+          <i class="fa-solid fa-box-open"></i>
+          <span class="menu-label">Lost and Fo...</span>
+        </a>
+      </div>
+    </div>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="category_Lost.css">
-
-   <!-- ICON -->
-   <link rel="icon" type="text/css" href="../Main Picture/mainPic.png">
-
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <div class="logo">
-    <div href="index.html../index.html" class="nav-logo">
-                <img src="../Main Picture/mainPic.png" alt="logo" class="logo-image">
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <div class="header">
+        <div class="back-button">
+          <h2>
+            <a href="lostnFound.html"
+              ><i class="fa-regular fa-circle-left"></i
+            ></a>
+          </h2>
+        </div>
+        <h2>LOST AND FOUND</h2>
+        <div
+          class="modal-overlay"
+          id="itemModal"
+          onclick="closeModalOnBg(event)"
+        >
+          <div class="modal-box">
+            <div class="modal-content">
+              <img id="modal-img" src="" alt="" />
+              <div class="modal-details"></div>
+              <div class="box">
+                <p class="item-area" id="modal-location"></p>
+                <p id="modal-comments"></p>
+                <p class="comments-label"></p>
+              </div>
             </div>
-    <p>Campus Tech Assist</p>
-  </div>
-
-  <div class="section-title">Discover</div>
-
-  <div class="menu">
-    <a href="../index.html">Home</a>
-    <a href="../CCS Department/ccsDept.html">CCS Department</a>
-    <a href="../Guide Go/guideGo.html">Guide Go</a>
-    <a href="../Tech Tutorial/techTut.html">Tech Tutorial</a>
-    <a class="active" href="../Lost and Found/lostnFound.html">Lost and Found</a>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
- 
-<div class="main">
-  <div class="header">
-    <div class="back-button">
-    <h2><a href="lostnFound.html"><i class="fa-regular fa-circle-left"></i>
-  </a>
-</h2> 
-    </div>
-    <h2>LOST AND FOUND</h2>
-  </div>  
-
-  <!-- ITEMS SECTION -->
-  <h2 id="categoryTitle">Lost Items</h2>
-  <div id="lostContainer" class="items-container">
-  </div>
-
-  <!-- Modal Overlay -->
-<div class="modal-overlay" id="itemModal" onclick="closeModalOnBg(event)">
-  <div class="modal-box">
-    <div class="modal-content">
-      <img id="modal-img" src="" alt="">
-      <div class="modal-details">
+          </div>
+        </div>
       </div>
-      <div class="box">
-        <p class="item-area" id="modal-location"></p>
-        <p id="modal-comments"></p>
-        <p class="comments-label"></p> 
-      </div>
-    </div>
-  </div>
-</div>
 
-<script type="module" src="category_Lost.js"></script>
-</body>
+      <h2 id="categoryTitle">Lost Items</h2>
+      <div id="lostContainer" class="items-container"></div>
+    </div>
+
+    <script type="module" src="category_Lost.js"></script>
+  </body>
 </html>

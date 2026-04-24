@@ -26,13 +26,12 @@ async function loadContent(url, title = '') {
 
 // Menu clickability + SPA navigation
 menu.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (!link) return;
   e.preventDefault();
-  if (e.target.tagName === 'A') {
-    const links = menu.querySelectorAll('a');
-    links.forEach((a) => a.classList.remove('active'));
-    e.target.classList.add('active');
-    loadContent(e.target.href, e.target.textContent);
-  }
+  menu.querySelectorAll('a').forEach((a) => a.classList.remove('active'));
+  link.classList.add('active');
+  loadContent(link.href, link.textContent.trim());
 });
 
 // Modal helpers
