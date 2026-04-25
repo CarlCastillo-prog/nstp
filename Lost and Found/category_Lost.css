@@ -278,6 +278,7 @@ body {
   flex: 0 0 190px;
   min-height: 300px;
   min-width: 100px;
+  max-width: 200px;
   padding: 20px;
   color: white;
   transition:
